@@ -1,0 +1,46 @@
+{
+  "name": "focusflow-backend",
+  "version": "1.0.0",
+  "description": "Backend do FocusFlow - Plataforma Integrada de Estudos",
+  "main": "dist/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typeorm": "typeorm-ts-node-commonjs"
+  },
+  "keywords": [
+    "focusflow",
+    "estudos",
+    "typescript",
+    "typeorm"
+  ],
+  "author": "Weslley",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.16.3",
+    "nodemailer": "^8.0.1",
+    "reflect-metadata": "^0.2.2",
+    "resend": "^6.9.3",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^25.2.1",
+    "@types/nodemailer": "^7.0.11",
+    "nodemon": "^3.1.11",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}
