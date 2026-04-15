@@ -38,15 +38,16 @@ A arquitetura do projeto organiza as responsabilidades de forma clara:
 
 3. **Configuração de Ambiente:**
    Crie um arquivo .env na raiz do projeto e configure as credenciais do seu banco de dados:
+   
    DB_HOST=localhost
    DB_PORT=3306
    DB_USER=seu_usuario
    DB_PASS=sua_senha
    DB_NAME=focusflow
 
-4. **Execute as Migrations:**
+5. **Execute as Migrations:**
    Para criar as tabelas no banco de dados:
    npm run typeorm migration:run
 
-5. **Inicie o servidor:**
+6. **Inicie o servidor:**
    npm run dev
