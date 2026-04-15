@@ -10,7 +10,10 @@ dotenv.config();
 const app: Application = express();
 
 //Middlewares globais
-app.use(cors()); //Habilitação do cors para requisiçõe frontend
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+}));
 app.use(express.json()); //Parse do json no body
 app.use(express.urlencoded({ extended: true }));
 
