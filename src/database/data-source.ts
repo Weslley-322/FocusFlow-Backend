@@ -2,10 +2,8 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import dotenv from "dotenv";
 
-// Carregar variáveis de ambiente
 dotenv.config();
 
-// Importar entidades
 import { User } from "./entities/User";
 import { Subject } from "./entities/Subject";
 import { Topic } from "./entities/Topic";
@@ -16,6 +14,8 @@ import { MindMap } from "./entities/MindMap";
 import { MindMapNode } from "./entities/MindMapNode";
 import { StudyGoal } from "./entities/StudyGoal";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const AppDataSource = new DataSource({
   type: "mysql",
   host: process.env.DB_HOST || "localhost",
@@ -23,8 +23,8 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME || "root",
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE || "focusflow",
-  synchronize: process.env.NODE_ENV === "development",
-  logging: process.env.NODE_ENV === "development",
+  synchronize: !isProduction,
+  logging: !isProduction,
   entities: [
     User,
     Subject,
@@ -40,13 +40,13 @@ export const AppDataSource = new DataSource({
   subscribers: [],
   charset: "utf8mb4",
   timezone: "-03:00",
+  ssl: isProduction ? { rejectUnauthorized: false } : { rejectUnauthorized: false },
 });
 
-// Função para inicializar a conexão
 export const initializeDatabase = async () => {
   try {
     await AppDataSource.initialize();
-    console.log("✅ Conexão com MySQL estabelecida com sucesso!");
+    console.log("✅ Conexão com banco de dados estabelecida!");
     console.log(`📊 Database: ${process.env.DB_DATABASE}`);
   } catch (error) {
     console.error("❌ Erro ao conectar com o banco de dados:", error);
