@@ -13,14 +13,7 @@ const allowedOrigins = process.env.FRONTEND_URL
   : ["http://localhost:3001"];
 
 app.use(cors({
-  origin: (origin, callback) => {
-    const allowed = process.env.FRONTEND_URL || "http://localhost:3001";
-    if (!origin || origin === allowed) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: true,
   credentials: true,
 }));
 
