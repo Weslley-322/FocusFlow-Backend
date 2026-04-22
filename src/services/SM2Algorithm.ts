@@ -100,10 +100,15 @@ export class SM2Algorithm {
    * @param interval - Intervalo em dias
    * @returns Data da próxima revisão
    */
+
 static getNextReviewDate(interval: number): Date {
-  const nextDate = new Date();
-  nextDate.setHours(0, 0, 0, 0); // zera para meia-noite local
-  nextDate.setDate(nextDate.getDate() + interval); 
+  const now = new Date();
+  const nextDate = new Date(Date.UTC(
+    now.getUTCFullYear(),
+    now.getUTCMonth(),
+    now.getUTCDate() + interval,
+    0, 0, 0, 0
+  ));
   return nextDate;
 }
 
